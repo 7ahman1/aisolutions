@@ -49,7 +49,7 @@ for (let i = 0; i < services.length; i++) {
   if (!services[i].id) services[i].id = `local-${Date.now()}-${i}`;
   // normalize price to a number
   const raw = String(services[i].price || "");
-  services[i].price = Number(raw.replace(/[^0-9.]/g, "")) ;
+ services[i].price = String(raw.replace(/[^0-9.]/g, ""));
 }
 
 window.services = services;
