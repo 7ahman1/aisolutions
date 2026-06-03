@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>AI Solutions Platform</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="nav-wrap">
+    <div class="logo">AI Solutions</div>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#features">Why Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">AI Growth for Modern Brands</span>
+      <h1>Build better digital experiences with smart AI strategy.</h1>
+      <p>Design, development, SEO, ads, and growth campaigns made to help your business scale faster.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-secondary">Talk to Us</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="panel-item panel-glow">
+        <p class="panel-title">Launch fast</p>
+        <p>Turn ideas into polished websites and campaigns in days.</p>
+      </div>
+      <div class="panel-item panel-glow">
+        <p class="panel-title">Rank higher</p>
+        <p>SEO, ads, and social reach designed to grow your traffic.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="features" class="features">
+  <div class="section-heading">
+    <span class="eyebrow">What makes us different</span>
+    <h2>AI-powered solutions that move your business forward.</h2>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>Fast Delivery</h3>
+      <p>Speedy launches with polished, conversion-focused design.</p>
+    </div>
+    <div class="feature-card">
+      <h3>SEO Optimized</h3>
+      <p>Built-in search authority and high-performing content structure.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI Powered</h3>
+      <p>Smart automation and personalization for every campaign.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Business Growth</h3>
+      <p>More leads, more traffic, and stronger brand momentum.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="section-heading">
+    <span class="eyebrow">Expert services</span>
+    <h2>Services designed for modern startups and growth brands.</h2>
+  </div>
+  <div id="services-grid" class="grid"></div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact-card">
+    <h2>Ready to grow?</h2>
+    <p>Send a message and we’ll help you find the right AI-powered growth plan.</p>
+    <a href="#modal" class="btn-primary" onclick="openModal('Consultation')">Book a Free Call</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 AI Solutions Platform</p>
+</footer>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3>Book Service</h3>
+    <input id="name" placeholder="Name">
+    <input id="email" placeholder="Email">
+    <input id="service" readonly>
+    <button class="btn-primary" onclick="submitBooking()">Submit</button>
+    <button class="btn-secondary" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
