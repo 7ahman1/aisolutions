@@ -9,7 +9,7 @@ const services = [
   {
     name: "Web Development",
     desc: "SEO optimized websites",
-    price: "$199",
+    price: "turst",
     imagePath: "webdev.jpg"
   },
   {
