@@ -56,9 +56,6 @@ const services = [
 // normalize and expose services to other scripts
 for (let i = 0; i < services.length; i++) {
   if (!services[i].id) services[i].id = `local-${Date.now()}-${i}`;
-  // normalize price to a number
-  const raw = String(services[i].price || "");
- services[i].price = String(raw.replace(/[^0-9.]/g, ""));
 }
 
 window.services = services;
@@ -89,7 +86,7 @@ function renderLandingServices() {
       <img src="${imageUrl}" alt="${s.name} illustration" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Service+Image';">
       <h3>${s.name}</h3>
       <p>${s.desc}</p>
-      <h4>$${s.price}</h4>
+   
     `;
     grid.appendChild(card);
   });
