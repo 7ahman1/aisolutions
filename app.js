@@ -28,7 +28,7 @@ const services = [
     name: "Google Optimization",
     desc: "Google growth strategy",
     price: "$129",
-    imagePath: "google.jpg"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_544yro544yro544y.png"
   },
   {
     name: "Personal Branding",
