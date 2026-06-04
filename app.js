@@ -22,7 +22,7 @@ const services = [
     name: "LinkedIn Growth",
     desc: "LinkedIn profile optimization",
     price: "$99",
-    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_eow0rdeow0rdeow0.png"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_otmd3gotmd3gotmd.png"
   },
   {
     name: "Google Optimization",
@@ -42,6 +42,15 @@ const services = [
     price: "$129",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/ChatGPT%20Image%20Jun%204,%202026,%2003_41_31%20AM.png"
   }
+
+  {
+    name: "Whatsapp Business and API ",
+    desc: "reaching cumster very smothly and autmate whatsapp activities and payment gateway",
+    price: "$129",
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_5ncw9k5ncw9k5ncw.png"
+  }
+
+  
 ];
 
 // normalize and expose services to other scripts
