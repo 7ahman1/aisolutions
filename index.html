@@ -4,11 +4,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>AI Solutions Platform</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>AI Solutions Platform | AI-Powered Growth, Web Development, SEO Services</title>
+  <meta name="description" content="Transform your business with AI-driven solutions. Expert web development, SEO optimization, LinkedIn growth, and digital marketing services. Increase traffic, leads, and revenue.">
+  <meta name="keywords" content="AI solutions, web development, SEO optimization, digital marketing, LinkedIn growth, Google optimization, social media growth, WhatsApp business, AI growth, online presence">
+  <meta name="author" content="AI Solutions Platform">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="language" content="English">
+  
+  <!-- Geo-Targeting Meta Tags -->
+  <meta name="geo.position" content="19.0760;72.8777">
+  <meta name="geo.placename" content="India">
+  <meta name="geo.region" content="IN">
+  <meta name="ICBM" content="19.0760, 72.8777">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aisolutions.com/">
+  <meta property="og:title" content="AI Solutions Platform | Business Growth Solutions">
+  <meta property="og:description" content="Transform your business with AI-driven solutions including web development, SEO, LinkedIn growth, and digital marketing.">
+  <meta property="og:image" content="https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Code_Generated_Image.png">
+  <meta property="og:site_name" content="AI Solutions Platform">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Solutions Platform | Business Growth Solutions">
+  <meta name="twitter:description" content="Transform your business with AI-driven solutions including web development, SEO, LinkedIn growth, and digital marketing.">
+  <meta name="twitter:image" content="https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Code_Generated_Image.png">
+  
+  <!-- Additional SEO Tags -->
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="canonical" href="https://aisolutions.com/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">>
 
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Structured Data - Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AI Solutions Platform",
+    "description": "AI-powered business growth solutions including web development, SEO, and digital marketing",
+    "url": "https://aisolutions.com",
+    "logo": "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Code_Generated_Image.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/ai-solutions",
+      "https://www.facebook.com/aisolutions",
+      "https://twitter.com/aisolutions"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    },
+    "areaServed": "Worldwide",
+    "knowsAbout": ["Web Development", "SEO Optimization", "Digital Marketing", "LinkedIn Growth", "AI Solutions", "Business Growth"],
+    "serviceType": ["Web Development", "SEO Services", "Digital Marketing", "Business Consulting"]
+  }
+  </script>
+  
+  <!-- Local Business Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "AI Solutions Platform",
+    "image": "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Code_Generated_Image.png",
+    "description": "Expert AI solutions and digital marketing services",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "India"
+    },
+    "areaServed": ["IN", "US", "UK", "CA", "AU", "AE"],
+    "priceRange": "$$$",
+    "availableLanguage": ["en", "fa", "ps", "ar"]
+  }
+  </script>
 </head>
 
 <body>
@@ -112,6 +186,21 @@
     <textarea id="remarks" placeholder="Remarks" data-i18n-placeholder="modal.remarks"></textarea>
     <button class="btn-primary" onclick="submitBooking()" data-i18n="modal.submit">Submit</button>
     <button class="btn-secondary" onclick="closeModal()" data-i18n="modal.close">Close</button>
+  </div>
+</div>
+
+<div id="success-modal" class="success-modal">
+  <div class="success-modal-content">
+    <div class="success-icon">✓</div>
+    <h3 data-i18n="modal.successTitle">Request Submitted!</h3>
+    <p data-i18n="modal.successMsg">Your booking details have been saved. We're opening WhatsApp to confirm your reservation.</p>
+    <div class="success-details">
+      <p><strong data-i18n="modal.name">Name</strong>: <span id="success-name"></span></p>
+      <p><strong data-i18n="modal.email">Email</strong>: <span id="success-email"></span></p>
+      <p><strong data-i18n="modal.service">Service</strong>: <span id="success-service"></span></p>
+      <p><strong data-i18n="modal.remarks">Remarks</strong>: <span id="success-remarks"></span></p>
+    </div>
+    <button class="btn-primary" onclick="proceedToWhatsApp()" data-i18n="modal.proceedWhatsapp">Open WhatsApp</button>
   </div>
 </div>
 
