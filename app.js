@@ -34,7 +34,7 @@ const services = [
     name: "Personal Branding",
     desc: "Personal brand development",
     price: "$149",
-    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/WhatsApp%20Image%202026-06-01%20at%209.45.40%20PM.jpeg"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_gu3yvvgu3yvvgu3y.png"
   },
   {
     name: "Social Media Growth",
