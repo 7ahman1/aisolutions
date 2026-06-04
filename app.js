@@ -220,10 +220,15 @@ function showSuccessModal(bookingData, whatsappUrl) {
 }
 
 function proceedToWhatsApp() {
-  if (currentWhatsappUrl) {
-    window.location.href = currentWhatsappUrl;
+  if (currentBookingData && currentWhatsappUrl) {
+    const message = `Hello! I would like to book the ${currentBookingData.service} service. Name: ${currentBookingData.name}. Email: ${currentBookingData.email}. Remarks: ${currentBookingData.remarks || "N/A"}`;
+    
+    const confirmed = confirm(`Ready to open WhatsApp?\n\nMessage that will be sent:\n\n"${message}"\n\nClick OK to continue.`);
+    
+    if (confirmed) {
+      window.location.href = currentWhatsappUrl;
+    }
   }
-  closeSuccessModal();
 }
 
 function closeSuccessModal() {
