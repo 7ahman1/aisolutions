@@ -16,7 +16,7 @@ const services = [
     name: "SEO Optimization",
     desc: "Rank on Google",
     price: "$149",
-    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/WhatsApp%20Image%202026-06-04%20at%2012.33.40%20PM.jpeg"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_x6pd25x6pd25x6pd.png"
   },
   {
     name: "LinkedIn Growth",
@@ -40,7 +40,7 @@ const services = [
     name: "Social Media Growth",
     desc: "Social media growth strategy",
     price: "$129",
-    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/ChatGPT%20Image%20Jun%204,%202026,%2003_41_31%20AM.png"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_6790op6790op6790.png"
   },
 
   {
