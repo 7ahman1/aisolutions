@@ -16,7 +16,7 @@ const services = [
     name: "SEO Optimization",
     desc: "Rank on Google",
     price: "$149",
-    imagePath: "seo.jpg"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/WhatsApp%20Image%202026-06-04%20at%2012.33.40%20PM.jpeg"
   },
   {
     name: "LinkedIn Growth",
