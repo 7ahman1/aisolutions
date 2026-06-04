@@ -182,7 +182,12 @@
     <h3 data-i18n="modal.title">Book Service</h3>
     <input id="name" placeholder="Name" data-i18n-placeholder="modal.name">
     <input id="email" placeholder="Email" data-i18n-placeholder="modal.email">
+    <input id="phone" placeholder="Phone Number" type="tel" data-i18n-placeholder="modal.phone">
     <input id="service" readonly data-i18n-placeholder="modal.service">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <input id="booking-date" placeholder="Date" type="date" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+      <input id="booking-time" placeholder="Time" type="time" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+    </div>
     <textarea id="remarks" placeholder="Remarks" data-i18n-placeholder="modal.remarks"></textarea>
     <button class="btn-primary" onclick="submitBooking()" data-i18n="modal.submit">Submit</button>
     <button class="btn-secondary" onclick="closeModal()" data-i18n="modal.close">Close</button>
@@ -197,7 +202,9 @@
     <div class="success-details">
       <p><strong data-i18n="modal.name">Name</strong>: <span id="success-name"></span></p>
       <p><strong data-i18n="modal.email">Email</strong>: <span id="success-email"></span></p>
+      <p><strong data-i18n="modal.phone">Phone</strong>: <span id="success-phone"></span></p>
       <p><strong data-i18n="modal.service">Service</strong>: <span id="success-service"></span></p>
+      <p><strong>Date & Time</strong>: <span id="success-datetime"></span></p>
       <p><strong data-i18n="modal.remarks">Remarks</strong>: <span id="success-remarks"></span></p>
     </div>
     <button class="btn-primary" onclick="proceedToWhatsApp()" data-i18n="modal.proceedWhatsapp">Open WhatsApp</button>
