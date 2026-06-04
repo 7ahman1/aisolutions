@@ -246,29 +246,15 @@ function showSuccessModal(bookingData, whatsappUrl) {
   currentBookingData = bookingData;
   currentWhatsappUrl = whatsappUrl;
   
-  const successName = document.getElementById("success-name");
-  const successEmail = document.getElementById("success-email");
-  const successService = document.getElementById("success-service");
-  const successRemarks = document.getElementById("success-remarks");
-  
-  if (successName) successName.textContent = bookingData.name;
-  if (successEmail) successEmail.textContent = bookingData.email;
-  if (successService) successService.textContent = bookingData.service;
-  if (successRemarks) successRemarks.textContent = bookingData.remarks || "(No remarks)";
-  
-  const successModal = document.getElementById("success-modal");
-  if (successModal) successModal.style.display = "flex";
+  // Redirect to WhatsApp immediately without showing modal
+  if (whatsappUrl) {
+    window.location.href = whatsappUrl;
+  }
 }
 
 function proceedToWhatsApp() {
-  if (currentBookingData && currentWhatsappUrl) {
-    const message = `Hello! I would like to book the ${currentBookingData.service} service. Name: ${currentBookingData.name}. Email: ${currentBookingData.email}. Remarks: ${currentBookingData.remarks || "N/A"}`;
-    
-    const confirmed = confirm(`Ready to open WhatsApp?\n\nMessage that will be sent:\n\n"${message}"\n\nClick OK to continue.`);
-    
-    if (confirmed) {
-      window.location.href = currentWhatsappUrl;
-    }
+  if (currentWhatsappUrl) {
+    window.location.href = currentWhatsappUrl;
   }
 }
 
@@ -352,7 +338,6 @@ async function submitBooking() {
     if (remarksInput) remarksInput.value = "";
     
     closeModal();
-    window.location.href = whatsappUrl;
   } catch (err) {
     console.error("Error:", err);
     console.error("Error message:", err.message);
