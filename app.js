@@ -163,12 +163,53 @@ window.deleteLocalService = function(id) {
   renderLandingServices();
 };
 
+// SEO: Add structured data for services
+function addServiceStructuredData() {
+  const serviceData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": window.services.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Service",
+        "name": service.name,
+        "description": service.desc,
+        "image": service.imagePath,
+        "provider": {
+          "@type": "Organization",
+          "name": "AI Solutions Platform"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": service.price || "Contact for pricing"
+        }
+      }
+    }))
+  };
+  
+  // Add or update the structured data script tag
+  let scriptTag = document.querySelector('script[type="application/ld+json"][data-services]');
+  if (!scriptTag) {
+    scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.setAttribute('data-services', 'true');
+    document.head.appendChild(scriptTag);
+  }
+  scriptTag.textContent = JSON.stringify(serviceData);
+}
+
 window.addEventListener("load", () => {
   const logo = document.getElementById("site-logo");
   if (logo) {
     const logoPath = logo.dataset.path || "logo.png";
     logo.src = getServiceImageUrl(logoPath);
   }
+  
+  // Add structured data for services
+  addServiceStructuredData();
+  
   setLanguage("en");
 });
 
