@@ -22,7 +22,7 @@ const services = [
     name: "LinkedIn Growth",
     desc: "LinkedIn profile optimization",
     price: "$99",
-    imagePath: "linkedin.jpg"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/WhatsApp%20Image%202026-06-04%20at%2012.26.21%20PM%20(1).jpeg"
   },
   {
     name: "Google Optimization",
