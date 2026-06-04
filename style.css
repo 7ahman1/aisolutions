@@ -296,12 +296,34 @@ nav a:hover {
   margin: 0 0 4px;
 }
 
-.modal-content input {
+.modal-content input,
+.modal-content textarea {
   width: 100%;
   padding: 14px 16px;
   border-radius: 14px;
   border: 1px solid rgba(15,23,42,0.08);
   font-size: 1rem;
+  font-family: inherit;
+  background: #f8fafc;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  outline: none;
+  border-color: rgba(59,130,246,0.8);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.12);
+}
+
+.modal-content textarea {
+  min-height: 140px;
+  line-height: 1.7;
+}
+
+.modal-content textarea::placeholder {
+  color: rgba(15,23,42,0.45);
 }
 
 .modal-content button {
