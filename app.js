@@ -183,13 +183,18 @@ function openModal(service) {
     serviceText = service;
   }
 
-  document.getElementById("service").value = serviceText;
-  document.getElementById("remarks").value = "";
-  document.getElementById("modal").style.display = "flex";
+  const serviceInput = document.getElementById("service");
+  const remarksInput = document.getElementById("remarks");
+  const modal = document.getElementById("modal");
+  
+  if (serviceInput) serviceInput.value = serviceText;
+  if (remarksInput) remarksInput.value = "";
+  if (modal) modal.style.display = "flex";
 }
 
 function closeModal() {
-  document.getElementById("modal").style.display = "none";
+  const modal = document.getElementById("modal");
+  if (modal) modal.style.display = "none";
 }
 
 // Store current booking for success modal
@@ -200,12 +205,18 @@ function showSuccessModal(bookingData, whatsappUrl) {
   currentBookingData = bookingData;
   currentWhatsappUrl = whatsappUrl;
   
-  document.getElementById("success-name").textContent = bookingData.name;
-  document.getElementById("success-email").textContent = bookingData.email;
-  document.getElementById("success-service").textContent = bookingData.service;
-  document.getElementById("success-remarks").textContent = bookingData.remarks || "(No remarks)";
+  const successName = document.getElementById("success-name");
+  const successEmail = document.getElementById("success-email");
+  const successService = document.getElementById("success-service");
+  const successRemarks = document.getElementById("success-remarks");
   
-  document.getElementById("success-modal").style.display = "flex";
+  if (successName) successName.textContent = bookingData.name;
+  if (successEmail) successEmail.textContent = bookingData.email;
+  if (successService) successService.textContent = bookingData.service;
+  if (successRemarks) successRemarks.textContent = bookingData.remarks || "(No remarks)";
+  
+  const successModal = document.getElementById("success-modal");
+  if (successModal) successModal.style.display = "flex";
 }
 
 function proceedToWhatsApp() {
@@ -216,16 +227,27 @@ function proceedToWhatsApp() {
 }
 
 function closeSuccessModal() {
-  document.getElementById("success-modal").style.display = "none";
+  const successModal = document.getElementById("success-modal");
+  if (successModal) successModal.style.display = "none";
   currentBookingData = null;
   currentWhatsappUrl = null;
 }
 
 async function submitBooking() {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const service = document.getElementById("service").value.trim();
-  const remarks = document.getElementById("remarks").value.trim();
+  const nameEl = document.getElementById("name");
+  const emailEl = document.getElementById("email");
+  const serviceEl = document.getElementById("service");
+  const remarksEl = document.getElementById("remarks");
+  
+  if (!nameEl || !emailEl || !serviceEl || !remarksEl) {
+    alert("Form elements not found. Please refresh the page.");
+    return;
+  }
+  
+  const name = nameEl.value.trim();
+  const email = emailEl.value.trim();
+  const service = serviceEl.value.trim();
+  const remarks = remarksEl.value.trim();
 
   if (!name || !email || !service) {
     alert("Please fill name, email, and service");
@@ -272,10 +294,17 @@ async function submitBooking() {
 
     console.log("Booking submitted successfully:", data);
     showSuccessModal({ name, email, service, remarks }, whatsappUrl);
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("service").value = "";
-    document.getElementById("remarks").value = "";
+    
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const serviceInput = document.getElementById("service");
+    const remarksInput = document.getElementById("remarks");
+    
+    if (nameInput) nameInput.value = "";
+    if (emailInput) emailInput.value = "";
+    if (serviceInput) serviceInput.value = "";
+    if (remarksInput) remarksInput.value = "";
+    
     closeModal();
     window.location.href = whatsappUrl;
   } catch (err) {
