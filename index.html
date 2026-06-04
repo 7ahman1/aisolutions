@@ -15,33 +15,43 @@
 
 <header class="header">
   <div class="nav-wrap">
-    <div class="logo">AI Solutions</div>
+    <div class="logo">
+      <img id="site-logo" src="" data-path="https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Code_Generated_Image.png" alt="AI Solutions logo" class="logo-img">
+      <span>AI Solutions</span>
+    </div>
 
     <nav>
-      <a href="#services">Services</a>
-      <a href="#features">Why Us</a>
-      <a href="#contact">Contact</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#features" data-i18n="nav.why">Why Us</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
+
+    <div class="language-select">
+      <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+      <button class="lang-btn" onclick="setLanguage('fa')">فارسی</button>
+      <button class="lang-btn" onclick="setLanguage('ps')">پښتو</button>
+      <button class="lang-btn" onclick="setLanguage('ar')">العربية</button>
+    </div>
   </div>
 
   <div class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">AI Growth for Modern Brands</span>
-      <h1>Launch faster. Rank higher. Grow smarter.</h1>
-      <p>We help businesses accelerate growth with AI-driven solutions, high-converting websites, strategic SEO, digital marketing, and intelligent automation. From building your online presence to generating qualified leads, we create systems designed for measurable results.</p>
+      <span class="eyebrow" data-i18n="hero.eyebrow">AI Growth for Modern Brands</span>
+      <h1 data-i18n="hero.title">Launch faster. Rank higher. Grow smarter.</h1>
+      <p data-i18n="hero.copy">We help businesses accelerate growth with AI-driven solutions, high-converting websites, strategic SEO, digital marketing, and intelligent automation. From building your online presence to generating qualified leads, we create systems designed for measurable results.</p>
       <div class="hero-actions">
-        <a href="#services" class="btn-primary">Explore Services</a>
-        <a href="#contact" class="btn-secondary">Book a Free Consultation</a>
+        <a href="#services" class="btn-primary" data-i18n="hero.btnExplore">Explore Services</a>
+        <a href="#contact" class="btn-secondary" data-i18n="hero.btnConsult">Book a Free Consultation</a>
       </div>
     </div>
     <div class="hero-panel">
       <div class="panel-item panel-glow">
-        <p class="panel-title">🤖 Powered by AI</p>
-        <p>Leverage automation, personalization, and intelligent workflows that save time, improve customer engagement, and drive growth.</p>
+        <p class="panel-title" data-i18n="panels.p1title">🤖 Powered by AI</p>
+        <p data-i18n="panels.p1copy">Leverage automation, personalization, and intelligent workflows that save time, improve customer engagement, and drive growth.</p>
       </div>
       <div class="panel-item panel-glow">
-        <p class="panel-title">📈 Scale Your Business</p>
-        <p>Generate more leads, increase traffic, strengthen your brand, and turn digital opportunities into measurable revenue.</p>
+        <p class="panel-title" data-i18n="panels.p2title">📈 Scale Your Business</p>
+        <p data-i18n="panels.p2copy">Generate more leads, increase traffic, strengthen your brand, and turn digital opportunities into measurable revenue.</p>
       </div>
     </div>
   </div>
@@ -49,62 +59,63 @@
 
 <section id="features" class="features">
   <div class="section-heading">
-    <span class="eyebrow">What makes us different</span>
-    <h2>AI-powered solutions that move your business forward.</h2>
+    <span class="eyebrow" data-i18n="features.eyebrow">What makes us different</span>
+    <h2 data-i18n="features.title">AI-powered solutions that move your business forward.</h2>
   </div>
 
   <div class="feature-grid">
     <div class="feature-card">
-      <h3>Intelligent Automation</h3>
-      <p>From customer engagement to lead nurturing, our AI-driven systems streamline operations and maximize efficiency at scale.</p>
+      <h3 data-i18n="features.cards.0.title">Intelligent Automation</h3>
+      <p data-i18n="features.cards.0.desc">From customer engagement to lead nurturing, our AI-driven systems streamline operations and maximize efficiency at scale.</p>
     </div>
     <div class="feature-card">
-      <h3>Search Engine Excellence</h3>
-      <p>Our SEO-first approach helps your business gain visibility, improve rankings, and attract customers actively searching for your services.</p>
+      <h3 data-i18n="features.cards.1.title">Search Engine Excellence</h3>
+      <p data-i18n="features.cards.1.desc">Our SEO-first approach helps your business gain visibility, improve rankings, and attract customers actively searching for your services.</p>
     </div>
     <div class="feature-card">
-      <h3>Data-Driven Decisions</h3>
-      <p>We leverage analytics, user behavior, and performance metrics to continuously optimize and improve results.</p>
+      <h3 data-i18n="features.cards.2.title">Data-Driven Decisions</h3>
+      <p data-i18n="features.cards.2.desc">We leverage analytics, user behavior, and performance metrics to continuously optimize and improve results.</p>
     </div>
     <div class="feature-card">
-      <h3>Results That Matter</h3>
-      <p>More traffic. More engagement. More leads. More revenue. Every project is aligned with meaningful business outcomes.</p>
+      <h3 data-i18n="features.cards.3.title">Results That Matter</h3>
+      <p data-i18n="features.cards.3.desc">More traffic. More engagement. More leads. More revenue. Every project is aligned with meaningful business outcomes.</p>
     </div>
   </div>
 </section>
 
 <section id="services" class="services">
   <div class="section-heading">
-    <span class="eyebrow">Expert services</span>
-    <h2>Services designed for modern startups and growth brands.</h2>
+    <span class="eyebrow" data-i18n="services.eyebrow">Expert services</span>
+    <h2 data-i18n="services.title">Services designed for modern startups and growth brands.</h2>
   </div>
   <div id="services-grid" class="grid"></div>
 </section>
 
 <section id="contact" class="contact">
   <div class="contact-card">
-    <h2>Ready to grow?</h2>
-    <p>Send a message and we’ll help you find the right AI-powered growth plan.</p>
-    <a href="#modal" class="btn-primary" onclick="openModal('Consultation')">Book a Free Call</a>
+    <h2 data-i18n="contact.title">Ready to grow?</h2>
+    <p data-i18n="contact.desc">Send a message and we’ll help you find the right AI-powered growth plan.</p>
+    <a href="#modal" class="btn-primary" onclick="openModal('Consultation')" data-i18n="contact.btn">Book a Free Call</a>
   </div>
 </section>
 
 <footer class="footer">
-  <p>© 2026 AI Solutions Platform</p>
+  <p data-i18n="footer">© 2026 AI Solutions Platform</p>
 </footer>
 
 <div id="modal" class="modal">
   <div class="modal-content">
-    <h3>Book Service</h3>
-    <input id="name" placeholder="Name">
-    <input id="email" placeholder="Email">
-    <input id="service" readonly>
-    <textarea id="remarks" placeholder="Remarks"></textarea>
-    <button class="btn-primary" onclick="submitBooking()">Submit</button>
-    <button class="btn-secondary" onclick="closeModal()">Close</button>
+    <h3 data-i18n="modal.title">Book Service</h3>
+    <input id="name" placeholder="Name" data-i18n-placeholder="modal.name">
+    <input id="email" placeholder="Email" data-i18n-placeholder="modal.email">
+    <input id="service" readonly data-i18n-placeholder="modal.service">
+    <textarea id="remarks" placeholder="Remarks" data-i18n-placeholder="modal.remarks"></textarea>
+    <button class="btn-primary" onclick="submitBooking()" data-i18n="modal.submit">Submit</button>
+    <button class="btn-secondary" onclick="closeModal()" data-i18n="modal.close">Close</button>
   </div>
 </div>
 
+<script src="translations.js"></script>
 <script src="app.js"></script>
 
 </body>
