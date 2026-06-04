@@ -10,7 +10,7 @@ const services = [
     name: "Web Development",
     desc: "SEO optimized websites",
     price: "turst",
-    imagePath: "webdev.jpg"
+    imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_544yro544yro544y.png"
   },
   {
     name: "SEO Optimization",
