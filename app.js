@@ -3,6 +3,7 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const whatsappNumber = "919538688780";
 const storageBucket = "images";
 const client = typeof supabase !== "undefined" ? supabase.createClient(supabaseUrl, supabaseKey) : null;
+let currentLanguage = "en";
 
 
 const services = [
@@ -10,7 +11,6 @@ const services = [
     name: "Web Development",
     desc: "Create modern, responsive, and high-performing websites that convert visitors into customers. We build professional digital experiences designed for growth and success.",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_eow0rdeow0rdeow0.png"
- 
   },
   {
     name: "SEO Optimization",
@@ -42,20 +42,20 @@ const services = [
     price: "$129",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_6790op6790op6790.png"
   },
-
   {
-    name: "Whatsapp Business and API ",
+    name: "Whatsapp Business and API",
     desc: "Turn conversations into conversions with WhatsApp Business solutions. Automate communication, engage customers instantly, and streamline your sales process for faster growth.",
     price: "$99",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_5ncw9k5ncw9k5ncw.png"
   }
-
-  
 ];
 
 // normalize and expose services to other scripts
 for (let i = 0; i < services.length; i++) {
   if (!services[i].id) services[i].id = `local-${Date.now()}-${i}`;
+  // normalize price to a number
+  const raw = String(services[i].price || "0");
+  services[i].price = Number(raw.replace(/[^0-9.]/g, "")) || 0;
 }
 
 window.services = services;
@@ -73,20 +73,69 @@ function getServiceImageUrl(path) {
   return data?.publicUrl || "https://via.placeholder.com/600x400?text=Service+Image";
 }
 
+function translate(key) {
+  if (!window.TRANSLATIONS) return "";
+  const parts = key.split(".");
+  let value = window.TRANSLATIONS[currentLanguage];
+  for (const part of parts) {
+    if (value == null) return "";
+    value = value[part];
+  }
+  return value || "";
+}
+
+function applyTranslations() {
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir = currentLanguage === "en" ? "ltr" : "rtl";
+
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const translation = translate(el.dataset.i18n);
+    if (translation) el.textContent = translation;
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const translation = translate(el.dataset.i18nPlaceholder);
+    if (translation) el.placeholder = translation;
+  });
+
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.remove("active");
+    const langCode = btn.getAttribute("onclick").match(/'([^']+)'/)?.[1];
+    if (langCode === currentLanguage) {
+      btn.classList.add("active");
+    }
+  });
+}
+
+function setLanguage(lang) {
+  currentLanguage = lang;
+  applyTranslations();
+  renderLandingServices();
+}
+
+function getTranslatedService(service) {
+  const serviceTranslations = window.SERVICE_TRANSLATIONS?.[service.name] || {};
+  const translation = serviceTranslations[currentLanguage] || {};
+  return {
+    name: translation.name || service.name,
+    desc: translation.desc || service.desc
+  };
+}
+
 function renderLandingServices() {
   const grid = document.getElementById("services-grid");
   if (!grid) return;
   grid.innerHTML = "";
   window.services.forEach(s => {
     const imageUrl = s.img || getServiceImageUrl(s.imagePath);
+    const translated = getTranslatedService(s);
     const card = document.createElement("div");
     card.className = "card";
-    card.onclick = () => openModal(s.name);
+    card.onclick = () => openModal(s);
     card.innerHTML = `
-      <img src="${imageUrl}" alt="${s.name} illustration" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Service+Image';">
-      <h3>${s.name}</h3>
-      <p>${s.desc}</p>
-   
+      <img src="${imageUrl}" alt="${translated.name} illustration" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Service+Image';">
+      <h3>${translated.name}</h3>
+      <p>${translated.desc}</p>
     `;
     grid.appendChild(card);
   });
@@ -114,11 +163,28 @@ window.deleteLocalService = function(id) {
   renderLandingServices();
 };
 
-window.addEventListener("load", renderLandingServices);
+window.addEventListener("load", () => {
+  const logo = document.getElementById("site-logo");
+  if (logo) {
+    const logoPath = logo.dataset.path || "logo.png";
+    logo.src = getServiceImageUrl(logoPath);
+  }
+  setLanguage("en");
+});
 
 // MODAL
 function openModal(service) {
-  document.getElementById("service").value = service;
+  let serviceText = "";
+  if (typeof service === "object") {
+    serviceText = getTranslatedService(service).name;
+  } else if (service === "Consultation") {
+    serviceText = translate("modal.consultation") || service;
+  } else {
+    serviceText = service;
+  }
+
+  document.getElementById("service").value = serviceText;
+  document.getElementById("remarks").value = "";
   document.getElementById("modal").style.display = "flex";
 }
 
@@ -130,9 +196,10 @@ async function submitBooking() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const service = document.getElementById("service").value.trim();
+  const remarks = document.getElementById("remarks").value.trim();
 
   if (!name || !email || !service) {
-    alert("Please fill all fields");
+    alert("Please fill name, email, and service");
     return;
   }
 
@@ -145,7 +212,7 @@ async function submitBooking() {
     }
 
     const whatsappMessage = encodeURIComponent(
-      `Hello! I would like to book the ${service} service. Name: ${name}. Email: ${email}.`
+      `Hello! I would like to book the ${service} service. Name: ${name}. Email: ${email}. Remarks: ${remarks}`
     );
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -162,6 +229,7 @@ async function submitBooking() {
           name,
           email,
           service,
+          remarks,
           status: "pending",
           created_at: new Date().toISOString()
         }
@@ -180,6 +248,7 @@ async function submitBooking() {
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("service").value = "";
+    document.getElementById("remarks").value = "";
     closeModal();
     window.location.href = whatsappUrl;
   } catch (err) {
