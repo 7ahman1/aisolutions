@@ -192,6 +192,35 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
+// Store current booking for success modal
+let currentBookingData = null;
+let currentWhatsappUrl = null;
+
+function showSuccessModal(bookingData, whatsappUrl) {
+  currentBookingData = bookingData;
+  currentWhatsappUrl = whatsappUrl;
+  
+  document.getElementById("success-name").textContent = bookingData.name;
+  document.getElementById("success-email").textContent = bookingData.email;
+  document.getElementById("success-service").textContent = bookingData.service;
+  document.getElementById("success-remarks").textContent = bookingData.remarks || "(No remarks)";
+  
+  document.getElementById("success-modal").style.display = "flex";
+}
+
+function proceedToWhatsApp() {
+  if (currentWhatsappUrl) {
+    window.location.href = currentWhatsappUrl;
+  }
+  closeSuccessModal();
+}
+
+function closeSuccessModal() {
+  document.getElementById("success-modal").style.display = "none";
+  currentBookingData = null;
+  currentWhatsappUrl = null;
+}
+
 async function submitBooking() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
@@ -217,8 +246,7 @@ async function submitBooking() {
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
     if (!client) {
-      alert("Supabase connection not initialized. Opening WhatsApp for booking instead.");
-      window.location.href = whatsappUrl;
+      showSuccessModal({ name, email, service, remarks }, whatsappUrl);
       return;
     }
 
@@ -229,7 +257,6 @@ async function submitBooking() {
           name,
           email,
           service,
-          remarks,
           status: "pending",
           created_at: new Date().toISOString()
         }
@@ -244,7 +271,7 @@ async function submitBooking() {
     }
 
     console.log("Booking submitted successfully:", data);
-    alert("Request submitted successfully! Opening WhatsApp to confirm your booking.");
+    showSuccessModal({ name, email, service, remarks }, whatsappUrl);
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("service").value = "";
