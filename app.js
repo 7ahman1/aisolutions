@@ -246,6 +246,25 @@ function showSuccessModal(bookingData, whatsappUrl) {
   currentBookingData = bookingData;
   currentWhatsappUrl = whatsappUrl;
   
+  // Populate success modal fields
+  const successName = document.getElementById("success-name");
+  const successEmail = document.getElementById("success-email");
+  const successPhone = document.getElementById("success-phone");
+  const successService = document.getElementById("success-service");
+  const successDatetime = document.getElementById("success-datetime");
+  const successRemarks = document.getElementById("success-remarks");
+  
+  if (successName) successName.textContent = bookingData.name || "";
+  if (successEmail) successEmail.textContent = bookingData.email || "";
+  if (successPhone) successPhone.textContent = bookingData.phone || "N/A";
+  if (successService) successService.textContent = bookingData.service || "";
+  if (successDatetime) {
+    const dateStr = bookingData.bookingDate || "";
+    const timeStr = bookingData.bookingTime || "";
+    successDatetime.textContent = dateStr && timeStr ? `${dateStr} at ${timeStr}` : (dateStr || timeStr || "N/A");
+  }
+  if (successRemarks) successRemarks.textContent = bookingData.remarks || "N/A";
+  
   // Redirect to WhatsApp immediately without showing modal
   if (whatsappUrl) {
     window.location.href = whatsappUrl;
@@ -268,7 +287,10 @@ function closeSuccessModal() {
 async function submitBooking() {
   const nameEl = document.getElementById("name");
   const emailEl = document.getElementById("email");
+  const phoneEl = document.getElementById("phone");
   const serviceEl = document.getElementById("service");
+  const dateEl = document.getElementById("booking-date");
+  const timeEl = document.getElementById("booking-time");
   const remarksEl = document.getElementById("remarks");
   
   if (!nameEl || !emailEl || !serviceEl || !remarksEl) {
@@ -278,7 +300,10 @@ async function submitBooking() {
   
   const name = nameEl.value.trim();
   const email = emailEl.value.trim();
+  const phone = phoneEl ? phoneEl.value.trim() : "";
   const service = serviceEl.value.trim();
+  const bookingDate = dateEl ? dateEl.value : "";
+  const bookingTime = timeEl ? timeEl.value : "";
   const remarks = remarksEl.value.trim();
 
   if (!name || !email || !service) {
@@ -287,7 +312,7 @@ async function submitBooking() {
   }
 
   try {
-    console.log("Submitting booking with data:", { name, email, service });
+    console.log("Submitting booking with data:", { name, email, service, remarks });
 
     if (!whatsappNumber || whatsappNumber === "YOUR_WHATSAPP_NUMBER") {
       alert("Please set your WhatsApp number in app.js before sending booking messages.");
@@ -295,12 +320,12 @@ async function submitBooking() {
     }
 
     const whatsappMessage = encodeURIComponent(
-      `Hello! I would like to book the ${service} service. Name: ${name}. Email: ${email}. Remarks: ${remarks}`
+      `Hello! I would like to book the ${service} service.\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPreferred Date: ${bookingDate}\nPreferred Time: ${bookingTime}\nRemarks: ${remarks}`
     );
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
     if (!client) {
-      showSuccessModal({ name, email, service, remarks }, whatsappUrl);
+      showSuccessModal({ name, email, phone, service, bookingDate, bookingTime, remarks }, whatsappUrl);
       return;
     }
 
@@ -310,7 +335,11 @@ async function submitBooking() {
         {
           name,
           email,
+          phone: phone || null,
           service,
+          booking_date: bookingDate || null,
+          booking_time: bookingTime || null,
+          remarks: remarks || null,
           status: "pending",
           created_at: new Date().toISOString()
         }
@@ -325,16 +354,22 @@ async function submitBooking() {
     }
 
     console.log("Booking submitted successfully:", data);
-    showSuccessModal({ name, email, service, remarks }, whatsappUrl);
+    showSuccessModal({ name, email, phone, service, bookingDate, bookingTime, remarks }, whatsappUrl);
     
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
     const serviceInput = document.getElementById("service");
+    const dateInput = document.getElementById("booking-date");
+    const timeInput = document.getElementById("booking-time");
     const remarksInput = document.getElementById("remarks");
     
     if (nameInput) nameInput.value = "";
     if (emailInput) emailInput.value = "";
+    if (phoneInput) phoneInput.value = "";
     if (serviceInput) serviceInput.value = "";
+    if (dateInput) dateInput.value = "";
+    if (timeInput) timeInput.value = "";
     if (remarksInput) remarksInput.value = "";
     
     closeModal();
