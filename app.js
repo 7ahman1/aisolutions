@@ -41,7 +41,7 @@ const services = [
     desc: "Social media growth strategy",
     price: "$129",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/ChatGPT%20Image%20Jun%204,%202026,%2003_41_31%20AM.png"
-  }
+  },
 
   {
     name: "Whatsapp Business and API ",
