@@ -8,45 +8,45 @@ const client = typeof supabase !== "undefined" ? supabase.createClient(supabaseU
 const services = [
   {
     name: "Web Development",
-    desc: "SEO optimized websites",
-    desc: "Click to Connect",
+    desc: "Create modern, responsive, and high-performing websites that convert visitors into customers. We build professional digital experiences designed for growth and success.",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_eow0rdeow0rdeow0.png"
+ 
   },
   {
     name: "SEO Optimization",
-    desc: "Rank on Google",
+    desc: "Improve search rankings, increase organic traffic, and drive more qualified leads to your website. Get discovered by customers actively searching for your services.",
     price: "$149",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_x6pd25x6pd25x6pd.png"
   },
   {
     name: "LinkedIn Growth",
-    desc: "LinkedIn profile optimization",
+    desc: "Transform your LinkedIn presence into a powerful networking and lead-generation machine. Grow your audience, increase engagement, and attract valuable business opportunities.",
     price: "$99",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_otmd3gotmd3gotmd.png"
   },
   {
     name: "Google Optimization",
-    desc: "Google growth strategy",
+    desc: "Enhance your visibility across Google Search, Maps, and business listings. Improve local discoverability and attract more customers through optimized online presence.",
     price: "$129",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_544yro544yro544y.png"
   },
   {
     name: "Personal Branding",
-    desc: "Personal brand development",
+    desc: "Build a powerful personal brand that establishes authority, increases visibility, and creates opportunities. We help professionals stand out, grow influence, and become trusted industry leaders.",
     price: "$149",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_gu3yvvgu3yvvgu3y.png"
   },
   {
     name: "Social Media Growth",
-    desc: "Social media growth strategy",
+    desc: "Expand your reach, engage your audience, and strengthen your online presence. Our growth strategies help businesses build communities and convert followers into customers.",
     price: "$129",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_6790op6790op6790.png"
   },
 
   {
     name: "Whatsapp Business and API ",
-    desc: "reaching cumster very smothly and autmate whatsapp activities and payment gateway",
-    price: "$129",
+    desc: "Turn conversations into conversions with WhatsApp Business solutions. Automate communication, engage customers instantly, and streamline your sales process for faster growth.",
+    price: "$99",
     imagePath: "https://wvfqmbwazpjbiutijlqs.supabase.co/storage/v1/object/public/images/Gemini_Generated_Image_5ncw9k5ncw9k5ncw.png"
   }
 
